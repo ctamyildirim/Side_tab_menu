@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Cihan Tamyıldırım"> 
+    <title>Tab Menu</title>
+    <meta name="keywords" content="fitness, personal, trainer, zayıflama, kilo, alma">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/1d56c7ec24.js" crossorigin="anonymous"></script>
+    <style>
+     
+     ul{
+            list-style: none;
+        }
+        .inclusive_div{
+            min-height: 100vh;
+            overflow: visible;
+        }
+        .nav_bar{
+            top:25%;
+        }
+        .li-sub-1 li{        
+            width: 150px;
+        }
+        .li-sub-2 li{
+            display: inline-flex;
+            width: 150px;
+        }
+        .collapsable_button{
+            cursor: pointer;
+            border:none;
+            right: 10px;
+            top:40px;
+            transition:text-shadow ease 500ms;
+            transition:transform ease-in-out 1s;
+        }
+        .collapsable_button:hover{
+            text-shadow: 0px 0px 10px black;
+            transform: rotate(540deg);            
+        }
+        .sub_menu{
+            z-index: 99;
+            background-color: white;
+        }
+        #product_image{
+           width: 90%;
+            height: auto;
+            z-index: 1;
+        }
+        .fake_layout{
+            background-color:pink ;
+        }
+        @media screen and (min-width:1200px) {
+            .li-sub-1 , .li-sub-2{
+                position: absolute;
+            } 
+        }
+        @media screen and (max-width:1199px) {
+            .li-sub-1 , .li-sub-2{
+                position: static;
+            }
+            .li-sub-1 li , .li-sub-2 li{
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="inclusive_div">
+        <div class="container">
+            <div class="row m-0 position-relative mt-4">
+                <div class="col-12 col-md-3 m-0 nav_bar_inclusive">
+                    <ul class="m-0 p-0 sticky-top nav_bar">
+                        <li><button class="btn btn-outline-secondary w-100 tab_menu-1 ">Siparişlerim</button>
+                            <ul class="li-sub-1 p-0 d-none flex-xl-row flex-column">
+                                <li class="sub_menu"><button class="btn btn-outline-primary btn-block w-100 px-0 ">Tümü</button></li>
+                                <li class="sub_menu"><button class="btn btn-outline-primary w-100 px-0 ">Siparişler</button></li>
+                                <li class="sub_menu"><button class="btn btn-outline-primary w-100 px-0 ">İadeler</button></li>
+                                <li class="sub_menu"><button class="btn btn-outline-primary w-100 px-0 ">İptaller</button></li>
+                                <li class="sub_menu"><button class="btn btn-outline-primary w-100 px-0 ">Taleplerim</button></li>
+                            </ul>                       
+                        </li>
+                        <li><button class="btn btn-outline-secondary w-100 tab_menu">Kullanıcı Bilgilerim</button></li>
+                        <li><button class="btn btn-outline-secondary w-100 tab_menu-2">Adres Bilgilerim</button>
+                            <ul class="li-sub-2 p-0 d-none flex-xl-row flex-column">
+                                <li class="sub_menu"><button class="btn btn-outline-primary w-100 px-0">Teslimat Adreslerim</button></li>
+                                <li class="sub_menu"><button class="btn btn-outline-primary w-100 px-0">Fatura Bilgilerim</button></li>
+                            </ul>
+                        </li>
+                        <li><button class="btn btn-outline-secondary w-100 tab_menu">Kayıtlı Kartlarım</button></li>
+                        <li><button class="btn btn-outline-secondary w-100 tab_menu">Favori Listem</button></li>
+                        <li><button class="btn btn-outline-secondary w-100 tab_menu">Size Özel</button></li>
+                        <li><button class="btn btn-outline-secondary w-100 tab_menu">Çözüm Merkezi</button></li>
+                        <li><button class="btn btn-outline-secondary w-100 tab_menu">Koşullar</button></li>
+                        <li><button class="btn btn-outline-secondary w-100 tab_menu">Çıkış Yap</button></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-9 item_bar h-100 p-3 my-md-0 my-2">
+                    <div class="product_1 row border position-relative mt-2 py-2">
+                        <span><i class="fa-solid fa-chevron-up collapsable_button position-absolute d-inline" data-target="product_detail_1"></i></span>                            
+                        <div class="col-md-5 col-8 order-1 order-md-1 d-flex flex-row justify-content-around">
+                            <div id="product_image_inclusive" class="col-6 position-relative d-flex justify-content-center">   
+                                <div class="fake_layout w-100 h-100 position-absolute"></div>
+                                <img id="product_image" src="Adsız.png" class="position-relative">
+                                
+                            </div>
+                            <div id="product_details_inclusive" class="col-6 text-center">
+                                <div>Sipariş No</div>
+                                <div>999 999 999</div>
+                                <div>15 Ekim 2022</div>
+                                <div>Pts, 14:22</div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 order-3 order-md-2">
+                            <div>Birinci Gönderim: <span class="text-success">Teslim Edildi</span></div>
+                            <div>İkinci Gönderim: <span class="text-warning">Kargoya verildi</span></div>
+                        </div>
+                        <div class="col-md-2 col-2 order-2 order-md-3 d-flex align-items-center text-center">TUTAR</div>
+                        <div id="product_detail_1" class="collapse col-12 order-4">
+                            <div class="col-12 mt-3">
+                                <hr>
+                                <h1>Sipariş Listesi</h1>
+                            </div>
+                        </div>     
+                    </div>
+                    <div class="product_2 row border position-relative mt-2 py-2">
+                        <span ><i class="fa-solid fa-chevron-up collapsable_button position-absolute d-inline" data-target="product_detail_2"></i></span>                            
+                        <div class="col-md-5 col-8 order-1 order-md-1 d-flex flex-row justify-content-around">
+                            <div id="product_image_inclusive" class="col-6 position-relative d-flex justify-content-center">   
+                                <div class="fake_layout w-100 h-100 position-absolute"></div>
+                                <img id="product_image" src="Adsız.png" class="position-relative">
+                                
+                            </div>
+                            <div id="product_details_inclusive" class="col-6 text-center">
+                                <div>Sipariş No</div>
+                                <div>999 999 999</div>
+                                <div>15 Ekim 2022</div>
+                                <div>Pts, 14:22</div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 order-3 order-md-2">
+                            <div>Birinci Gönderim: <span class="text-success">Teslim Edildi</span></div>
+                            <div>İkinci Gönderim: <span class="text-warning">Kargoya verildi</span></div>
+                        </div>
+                        <div class="col-md-2 col-2 order-2 order-md-3 d-flex align-items-center text-center">TUTAR</div>
+                        <div id="product_detail_2" class="collapse col-12 order-4">
+                            <div class="col-12 mt-3">
+                                <hr>
+                                <h1>Sipariş Listesi</h1>
+                            </div>
+                        </div>     
+                    </div>
+                    <div class="product_3 row border position-relative mt-2 py-2">
+                        <span><i class="fa-solid fa-chevron-up collapsable_button position-absolute d-inline" data-target="product_detail_3"></i></span>                            
+                        <div class="col-md-5 col-8 order-1 order-md-1 d-flex flex-row justify-content-around">
+                            <div id="product_image_inclusive" class="col-6 position-relative d-flex justify-content-center">   
+                                <div class="fake_layout w-100 h-100 position-absolute"></div>
+                                <img id="product_image" src="Adsız.png" class="position-relative">
+                                
+                            </div>
+                            <div id="product_details_inclusive" class="col-6 text-center">
+                                <div>Sipariş No</div>
+                                <div>999 999 999</div>
+                                <div>15 Ekim 2022</div>
+                                <div>Pts, 14:22</div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-12 order-3 order-md-2">
+                            <div>Birinci Gönderim: <span class="text-success">Teslim Edildi</span></div>
+                            <div>İkinci Gönderim: <span class="text-warning">Kargoya verildi</span></div>
+                        </div>
+                        <div class="col-md-2 col-2 order-2 order-md-3 d-flex align-items-center text-center">TUTAR</div>
+                        <div id="product_detail_3" class="collapse col-12 order-4">
+                            <div class="col-12 mt-3">
+                                <hr>
+                                <h1>Sipariş Listesi</h1>
+                            </div>
+                        </div>     
+                    </div>
+                </div>     
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            var sub_menu_1_control=true;
+            var sub_menu_2_control=true;
+            var screen_width = $(window).width();
+               //Siparişlerim Adlı Tab Menü Butonu
+            $(document).on("click", ".tab_menu-1", function(){
+                if(sub_menu_1_control == true){
+                    sub_menu_1_control = false;
+                    $(".li-sub-1").removeClass("d-none");
+                    $(".li-sub-1").addClass("d-xl-inline-flex d-flex");
+
+                }
+                else if(sub_menu_1_control == false){
+                    $(".li-sub-1").removeClass("d-xl-inline-flex d-flex");
+                    $(".li-sub-1").addClass("d-none");
+                    sub_menu_1_control = true;
+                }
+                if( sub_menu_1_control == sub_menu_2_control && sub_menu_1_control==false){
+                    $(".li-sub-2").removeClass("d-xl-inline-flex d-flex");
+                    $(".li-sub-2").addClass("d-none");
+                    sub_menu_2_control = true;
+                }
+            });
+               //Adres Bilgilerim Adlı Tab Menü Butonu
+            $(document).on("click", ".tab_menu-2", function(){
+                if(sub_menu_2_control == true){
+                    sub_menu_2_control = false;
+                    $(".li-sub-2").removeClass("d-none");
+                    $(".li-sub-2").addClass("d-xl-inline-flex d-flex");
+                }
+                else if(sub_menu_2_control == false){
+                    $(".li-sub-2").removeClass("d-xl-inline-flex d-flex");
+                    $(".li-sub-2").addClass("d-none");
+
+                    sub_menu_2_control = true;
+                }
+                if( sub_menu_1_control == sub_menu_2_control && sub_menu_1_control==false){
+                    $(".li-sub-1").removeClass("d-xl-inline-flex d-flex");
+                    $(".li-sub-1").addClass("d-none");
+                    sub_menu_1_control = true;
+                }
+            });
+                //Tab Menünün Collapse Şeklinde Çalışması İçin Kodlar
+            $(document).on("click", ".tab_menu", function(){
+                if(sub_menu_1_control == false || sub_menu_2_control==false){
+                    $(".li-sub-1").removeClass("d-xl-inline-flex d-flex");
+                    $(".li-sub-1").addClass("d-none");
+                    $(".li-sub-2").removeClass("d-xl-inline-flex d-flex");
+                    $(".li-sub-2").addClass("d-none");
+
+                    sub_menu_1_control = true;
+                    sub_menu_2_control = true;
+                }
+            });
+                //Tutar Yazısının Sağında Bulunan Aşağı Ok İkonu için Toggle
+            $(document).on("click", ".product_1", function(){
+                $("#product_detail_1").toggle(1000);
+            });
+            $(document).on("click", ".product_2", function(){
+                $("#product_detail_2").toggle(1000);
+            });   
+            $(document).on("click", ".product_3", function(){
+                $("#product_detail_3").toggle(1000);
+            });          
+        });
+
+    </script>
+</body>
+</html>
